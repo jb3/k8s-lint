@@ -73,7 +73,7 @@ export async function kubectlEvalLint(manifests: string[], namespace: string) {
     await validateConnection(toolPath);
     for (let i = 0; i < manifests.length; i++) {
         const manifest = manifests[i];
-        let toolRunner = new ToolRunner(toolPath, ['apply', '-f', manifest, '--server-dry-run', '--namespace', namespace]);
+        let toolRunner = new ToolRunner(toolPath, ['apply', '-f', manifest, '--dry-run=server', '--namespace', namespace]);
         await toolRunner.exec();
     }
 }
